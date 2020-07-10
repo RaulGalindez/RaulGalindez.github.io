@@ -2,10 +2,11 @@
 title: "Graficando"
 ---
 
-More about this website.
+Scatter plots con tres (3) variables cuantitivas
 
-```{r}
+```{r scatter_plots_3_var_cuanti}
 library(ggplot2)
-ggplot(mtcars, aes(wt, mpg, color = disp))+ geom_point()
+ggplot(mtcars, aes(wt, mpg, color = disp)) + geom_point() + labs(x = 'Weight', y= 'Miles/(US) gallon')
 ```
+
 
