@@ -5,6 +5,10 @@ subtitle: "Múltiple y logística"
 
 __*Caso: Restaurantes italianos en NYC*__
 
+```{r}
+knitr::include_graphics('img/italian_food.jpg')
+```
+
 Usaremos un dataset que contiene los reviews hechos por [Zagat](https://www.zagat.com/about-us){target="_blank"} (en 2001) a 168 restauranres italianos en New York.
 
 Cada restaurante recibe una puntuación del 0 al 30 por la calidad de su comida, la decoración y el servicio recibido.  
