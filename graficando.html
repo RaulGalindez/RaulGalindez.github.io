@@ -312,21 +312,42 @@ $(document).ready(function () {
 </div>
 
 
-<div id="scatter-plots-con-tres-3-variables-cuantitivas" class="section level1">
-<h1>Scatter plots con tres (3) variables cuantitivas</h1>
+<div id="scatter-plots" class="section level1">
+<h1>Scatter plots</h1>
+<div id="con-tres-3-variables-cuantitivas" class="section level2">
+<h2>Con tres (3) variables cuantitivas</h2>
 <pre class="r"><code>library(ggplot2)
 ggplot(mtcars, aes(wt, mpg, color = disp)) + geom_point() + labs(x = &#39;Weight&#39;, y= &#39;Miles/(US) gallon&#39;)</code></pre>
 <p><img src="graficando_files/figure-html/scatter_plots_3_var_cuanti-1.png" width="672" /></p>
-<p>Scatter plots con dos (2) variables cuantitativas y una cualitativa</p>
+</div>
+<div id="con-dos-2-variables-cuantitativas-y-una-cualitativa" class="section level2">
+<h2>Con dos (2) variables cuantitativas y una cualitativa</h2>
 <pre class="r"><code>library(ggplot2)
 ggplot(mtcars, aes(wt, mpg, color = disp)) + geom_point() + labs(x = &#39;Weight&#39;, y= &#39;Miles/(US) gallon&#39;)</code></pre>
-<p><img src="graficando_files/figure-html/scatter_plots_2_cuanti_1_cuali-1.png" width="672" /></p>
-<p>Gráficos de barras apilado con paleta de colores definida</p>
+<p><img src="graficando_files/figure-html/scatter_plots_2_cuanti_1_cuali-1.png" width="672" /> En ocasiones cuando una o las dos variables a graficar son categóricas,podemos presenciar overplotting, causando que dimensionemos claramente el fenómeno estudiado. Para resolver lo anterior, podemos introducir un pequeño ruido en la representación de los puntos y aplicar un alpha (valor que regula la transparencia de los markers) y así lograr ver mejor la relación entre las variables.</p>
+<p>Veamos sin jitter ni alpha</p>
+<pre class="r"><code>ggplot (mtcars, 
+        aes(as.factor(cyl), mpg),
+        color = as.factor(am)) + 
+  geom_point()</code></pre>
+<p><img src="graficando_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Con jitter y alpha = 0.2</p>
+<pre class="r"><code>ggplot (mtcars, 
+        aes(as.factor(cyl), mpg),
+        color = as.factor(am)) + 
+  geom_point(alpha = 0.2,
+             position = position_jitter(width = 0.1))</code></pre>
+<p><img src="graficando_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>#Gráficos de barras</p>
+</div>
+<div id="apilados-con-paleta-de-colores-definida" class="section level2">
+<h2>Apilados con paleta de colores definida</h2>
 <pre class="r"><code>#palette &lt;- c()
 ggplot(mtcars, aes(as.factor(cyl), fill = as.factor(am))) + 
   geom_bar() + 
   labs(x= &#39;Number of cylinders&#39;)</code></pre>
-<p><img src="graficando_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="graficando_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
 </div>
 
 <p>Copyright &copy; 2020 Raúl Galíndez, Inc. All rights reserved.</p>
