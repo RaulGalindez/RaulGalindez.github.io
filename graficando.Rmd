@@ -1,0 +1,11 @@
+---
+title: "Graficando"
+---
+
+More about this website.
+
+```{r}
+library(ggplot2)
+ggplot(mtcars, aes(wt, mpg, color = disp))+ geom_point()
+```
+
