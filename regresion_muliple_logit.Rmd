@@ -5,8 +5,8 @@ subtitle: "Múltiple y logística"
 
 __*Caso: Restaurantes italianos en NYC*__
 
-```{r}
-knitr::include_graphics('img/italian_food.jpg')
+```{r italian_food, echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE}
+knitr::include_graphics('img/italian_food_3.jpg')
 ```
 
 Usaremos un dataset que contiene los reviews hechos por [Zagat](https://www.zagat.com/about-us){target="_blank"} (en 2001) a 168 restauranres italianos en New York.
@@ -30,5 +30,34 @@ glimpse(nyc)
 ```
 
 Tenemos :  
-- ´names(nyc)´ asas  
-- asas
+
+- __`Case`__:
+- `Restaurante`: nombre del restaurante.
+- `Price`: precio medio de un plato en el restaurante.
+- `Food`: puntuación recibida por la comida.   
+- `Decor`: puntuación recibida por la decoración del lugar.   
+- `Service`: puntuación recibida por el servicio recibido.    
+- `East`: variable dicotómica que representa si el restaurante está al este o al oeste de Fifth Avenue. 
+
+# Análisis Exploratorio de Datos
+
+¿cómo están distribuidas las variables?
+¿cómo se relacionan una con la otra?
+¿qué patrones representan?
+
+Un buen aprach es usar ´pairs()´ funtion para explorar visualmente la relación entre las variables:
+
+```{r EDA, echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE,}
+#pairs(nyc[,3:7])
+paquetes_procesamiento <- c('GGally','ggplot2') 
+lapply(paquetes_procesamiento, require, character.only = T)
+
+ggpairs(nyc[,3:7]) 
+```
+
+- Podemos ver que la variable que más se relaciona, linealmente,  con el precio medio es la puntuación obtenida por la decoración del lugar. 
+- Las variables que más se relacionan entre sí, es la puntruación de la decoración y del sercicio.     
+- Para variables dicotómicas`east`, estos scatter plots no muestran mucha concluyente.
+
+
+

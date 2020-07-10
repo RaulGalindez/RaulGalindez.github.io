@@ -322,8 +322,7 @@ $(document).ready(function () {
 
 
 <p><strong><em>Caso: Restaurantes italianos en NYC</em></strong></p>
-<pre class="r"><code>knitr::include_graphics(&#39;img/italian_food.jpg&#39;)</code></pre>
-<p><img src="img/italian_food.jpg" /><!-- --></p>
+<p><img src="img/italian_food_3.jpg" /><!-- --></p>
 <p>Usaremos un dataset que contiene los reviews hechos por <a href="https://www.zagat.com/about-us" target="_blank">Zagat</a> (en 2001) a 168 restauranres italianos en New York.</p>
 <p>Cada restaurante recibe una puntuación del 0 al 30 por la calidad de su comida, la decoración y el servicio recibido.<br />
 El dataset incluye el valor del precio medio (USD) de un plato (incluye una bebida y la propina)</p>
@@ -340,9 +339,41 @@ El dataset incluye el valor del precio medio (USD) de un plato (incluye una bebi
 ## $ Decor      &lt;int&gt; 18, 19, 13, 20, 19, 22, 16, 18, 19, 17, 17, 19, 19, 17, ...
 ## $ Service    &lt;int&gt; 20, 19, 18, 17, 21, 21, 21, 21, 22, 19, 20, 21, 20, 19, ...
 ## $ East       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</code></pre>
-<p>Tenemos :<br />
-- ´names(nyc)´ asas<br />
-- asas</p>
+<p>Tenemos :</p>
+<ul>
+<li><strong><code>Case</code></strong>:</li>
+<li><code>Restaurante</code>: nombre del restaurante.</li>
+<li><code>Price</code>: precio medio de un plato en el restaurante.</li>
+<li><code>Food</code>: puntuación recibida por la comida.<br />
+</li>
+<li><code>Decor</code>: puntuación recibida por la decoración del lugar.<br />
+</li>
+<li><code>Service</code>: puntuación recibida por el servicio recibido.<br />
+</li>
+<li><code>East</code>: variable dicotómica que representa si el restaurante está al este o al oeste de Fifth Avenue.</li>
+</ul>
+<div id="análisis-exploratorio-de-datos" class="section level1">
+<h1>Análisis Exploratorio de Datos</h1>
+<p>¿cómo están distribuidas las variables? ¿cómo se relacionan una con la otra? ¿qué patrones representan?</p>
+<p>Un buen aprach es usar ´pairs()´ funtion para explorar visualmente la relación entre las variables:</p>
+<pre><code>FALSE Loading required package: GGally</code></pre>
+<pre><code>FALSE Loading required package: ggplot2</code></pre>
+<pre><code>FALSE Registered S3 method overwritten by &#39;GGally&#39;:
+FALSE   method from   
+FALSE   +.gg   ggplot2</code></pre>
+<pre><code>FALSE [[1]]
+FALSE [1] TRUE
+FALSE 
+FALSE [[2]]
+FALSE [1] TRUE</code></pre>
+<p><img src="regresion_muliple_logit_files/figure-html/eda-1.png" width="672" /></p>
+<ul>
+<li>Podemos ver que la variable que más se relaciona, linealmente, con el precio medio es la puntuación obtenida por la decoración del lugar.</li>
+<li>Las variables que más se relacionan entre sí, es la puntruación de la decoración y del sercicio.<br />
+</li>
+<li>Para variables dicotómicas<code>east</code>, estos scatter plots no muestran mucha concluyente.</li>
+</ul>
+</div>
 
 <p>Copyright &copy; 2020 Raúl Galíndez, Inc. All rights reserved.</p>
 
