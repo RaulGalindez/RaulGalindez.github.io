@@ -312,10 +312,22 @@ $(document).ready(function () {
 </div>
 
 
-<p>Scatter plots con tres (3) variables cuantitivas</p>
+<div id="scatter-plots-con-tres-3-variables-cuantitivas" class="section level1">
+<h1>Scatter plots con tres (3) variables cuantitivas</h1>
 <pre class="r"><code>library(ggplot2)
 ggplot(mtcars, aes(wt, mpg, color = disp)) + geom_point() + labs(x = &#39;Weight&#39;, y= &#39;Miles/(US) gallon&#39;)</code></pre>
 <p><img src="graficando_files/figure-html/scatter_plots_3_var_cuanti-1.png" width="672" /></p>
+<p>Scatter plots con dos (2) variables cuantitativas y una cualitativa</p>
+<pre class="r"><code>library(ggplot2)
+ggplot(mtcars, aes(wt, mpg, color = disp)) + geom_point() + labs(x = &#39;Weight&#39;, y= &#39;Miles/(US) gallon&#39;)</code></pre>
+<p><img src="graficando_files/figure-html/scatter_plots_2_cuanti_1_cuali-1.png" width="672" /></p>
+<p>Gráficos de barras apilado con paleta de colores definida</p>
+<pre class="r"><code>#palette &lt;- c()
+ggplot(mtcars, aes(as.factor(cyl), fill = as.factor(am))) + 
+  geom_bar() + 
+  labs(x= &#39;Number of cylinders&#39;)</code></pre>
+<p><img src="graficando_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>
 
 <p>Copyright &copy; 2020 Raúl Galíndez, Inc. All rights reserved.</p>
 
