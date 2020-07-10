@@ -6,14 +6,17 @@ title: "Graficando"
 
 ```{r scatter_plots_3_var_cuanti}
 library(ggplot2)
-ggplot(mtcars, aes(wt, mpg, color = disp)) + geom_point() + labs(x = 'Weight', y= 'Miles/(US) gallon')
+ggplot(mtcars, aes(wt, mpg, color = disp)) + 
+  geom_point() + 
+  labs(x = 'Weight', y= 'Miles/(US) gallon')
 ```
 
 ## Con dos (2) variables cuantitativas y una cualitativa
 
 ```{r scatter_plots_2_cuanti_1_cuali}
-library(ggplot2)
-ggplot(mtcars, aes(wt, mpg, color = disp)) + geom_point() + labs(x = 'Weight', y= 'Miles/(US) gallon')
+ggplot(mtcars, aes(wt, mpg, color = disp)) + 
+  geom_point() + 
+  labs(x = 'Weight', y= 'Miles/(US) gallon')
 ```
 En ocasiones cuando una o las dos variables a graficar son categóricas,podemos presenciar overplotting, causando que dimensionemos claramente el fenómeno estudiado. 
 Para resolver lo anterior, podemos introducir un pequeño ruido en la representación de los puntos y aplicar un alpha (valor que regula la transparencia de los markers) y así lograr ver mejor la relación entre las variables.
@@ -21,23 +24,25 @@ Para resolver lo anterior, podemos introducir un pequeño ruido en la representa
 Veamos sin jitter ni alpha
 ```{r}
 ggplot (mtcars, 
-        aes(as.factor(cyl), mpg),
-        color = as.factor(am)) + 
+        aes(as.factor(cyl), mpg),color = as.factor(am)) + 
   geom_point()
 ```
 
 Con jitter  y alpha =  0.2
 ```{r}
-ggplot (mtcars, 
-        aes(as.factor(cyl), mpg),
-        color = as.factor(am)) + 
-  geom_point(alpha = 0.2,
-             position = position_jitter(width = 0.1))
+ggplot (mtcars,aes(as.factor(cyl), mpg),color = as.factor(am)) + 
+  geom_point(alpha = 0.2,position = position_jitter(width = 0.1))
 ```
 
 
+Podemos usar una variable cuantitativa como size y así enriquecer nuestro gráfico
 
+```{r}
+ggplot(mtcars, aes(wt,mpg, size = disp)) +
+  geom_point(alpha= 0.5)
+```
 
+Podemos cambiar la forma que toman cada valor ploteado e incluso hacer que según cierta variable, cambie el shape
 
 #Gráficos de barras
 
