@@ -22,6 +22,8 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -273,13 +275,25 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
 </li>
 <li>
-  <a href="graficando.html">Graficando</a>
+  <a href="graficando.html">
+    <span class="fa fa-line-chart"></span>
+     
+    Graficando
+  </a>
 </li>
 <li>
-  <a href="about.html">About</a>
+  <a href="about.html">
+    <span class="fa fa-info"></span>
+     
+    About
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -298,10 +312,10 @@ $(document).ready(function () {
 </div>
 
 
-<p>More about this website.</p>
+<p>Scatter plots con tres (3) variables cuantitivas</p>
 <pre class="r"><code>library(ggplot2)
-ggplot(mtcars, aes(wt, mpg, color = disp))+ geom_point()</code></pre>
-<p><img src="graficando_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+ggplot(mtcars, aes(wt, mpg, color = disp)) + geom_point() + labs(x = &#39;Weight&#39;, y= &#39;Miles/(US) gallon&#39;)</code></pre>
+<p><img src="graficando_files/figure-html/scatter_plots_3_var_cuanti-1.png" width="672" /></p>
 
 <p>Copyright &copy; 2020 Raúl Galíndez, Inc. All rights reserved.</p>
 
