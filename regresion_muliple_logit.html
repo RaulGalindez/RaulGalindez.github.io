@@ -11,7 +11,7 @@
 
 
 
-<title>My Website</title>
+<title>Regresión lineal</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -315,12 +315,32 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">My Website</h1>
+<h1 class="title toc-ignore">Regresión lineal</h1>
+<h3 class="subtitle">Múltiple y logística</h3>
 
 </div>
 
 
-<p>Hello, Website!</p>
+<p><strong><em>Caso: Restaurantes italianos en NYC</em></strong></p>
+<p>Usaremos un dataset que contiene los reviews hechos por <a href="https://www.zagat.com/about-us" target="_blank">Zagat</a> (en 2001) a 168 restauranres italianos en New York.</p>
+<p>Cada restaurante recibe una puntuación del 0 al 30 por la calidad de su comida, la decoración y el servicio recibido.<br />
+El dataset incluye el valor del precio medio (USD) de un plato (incluye una bebida y la propina)</p>
+<p>Responderemos a la interrogante: <em>¿qué factores contribuyen al precio medio de un plato en un restaurante italiano en NYC?</em></p>
+<p><strong>Manos a la obra</strong></p>
+<p>¿cómo está estructurado el dataset?</p>
+<pre class="r"><code>glimpse(nyc)</code></pre>
+<pre><code>## Rows: 168
+## Columns: 7
+## $ Case       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1...
+## $ Restaurant &lt;chr&gt; &quot;Daniella Ristorante&quot;, &quot;Tello&#39;s Ristorante&quot;, &quot;Biricchino...
+## $ Price      &lt;int&gt; 43, 32, 34, 41, 54, 52, 34, 34, 39, 44, 45, 47, 52, 35, ...
+## $ Food       &lt;int&gt; 22, 20, 21, 20, 24, 22, 22, 20, 22, 21, 19, 21, 21, 19, ...
+## $ Decor      &lt;int&gt; 18, 19, 13, 20, 19, 22, 16, 18, 19, 17, 17, 19, 19, 17, ...
+## $ Service    &lt;int&gt; 20, 19, 18, 17, 21, 21, 21, 21, 22, 19, 20, 21, 20, 19, ...
+## $ East       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</code></pre>
+<p>Tenemos :<br />
+- ´names(nyc)´ asas<br />
+- asas</p>
 
 <p>Copyright &copy; 2020 Raúl Galíndez, Inc. All rights reserved.</p>
 

@@ -8,6 +8,9 @@ navbar:
       href: index.html
     - text: "Graficando"
       href: graficando.html      
+      icon: fa-bar-chart
+    - text: "RLM + Logit"
+      href: regresion_muliple_logit.html      
       icon: fa-line-chart
     - text: "About"
       icon: fa-info

@@ -1,0 +1,30 @@
+---
+title: "Regresión lineal"
+subtitle: "Múltiple y logística"
+---
+
+__*Caso: Restaurantes italianos en NYC*__
+
+Usaremos un dataset que contiene los reviews hechos por [Zagat](https://www.zagat.com/about-us){target="_blank"} (en 2001) a 168 restauranres italianos en New York.
+
+Cada restaurante recibe una puntuación del 0 al 30 por la calidad de su comida, la decoración y el servicio recibido.  
+El dataset incluye el valor del precio medio (USD) de un plato (incluye una bebida y la propina)
+
+Responderemos a la interrogante: *¿qué factores contribuyen al precio medio de un plato en un restaurante italiano en NYC?*
+
+__Manos a la obra__
+
+¿cómo está estructurado el dataset?
+
+```{r include=FALSE}
+library(dplyr)
+nyc <- read.csv(file = 'data/nyc.csv')
+```
+
+```{r}
+glimpse(nyc)
+```
+
+Tenemos :  
+- ´names(nyc)´ asas  
+- asas
