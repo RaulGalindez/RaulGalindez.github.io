@@ -1,6 +1,11 @@
 ---
 title: "Graficando"
 ---
+
+```{r graph, echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE}
+knitr::include_graphics ('img/graph2.jpg')
+```
+
 # Scatter plots
 ## Con tres (3) variables cuantitivas
 
@@ -9,11 +14,20 @@ Agregaremos una linea de ajuste usando el modelo lineal general + los respectibo
 
 ```{r scatter_plots_3_var_cuanti}
 library(ggplot2)
-ggplot(mtcars, aes(wt, mpg, color = disp)) + 
+library(plotly)
+
+scat3 <- ggplot(mtcars, aes(wt, mpg, color = disp)) + 
   geom_point() + 
   geom_smooth(method = 'lm')+
  theme_minimal()+
   labs(x = 'Weight', y= 'Miles/(US) gallon')
+
+scat3
+
+pp <- ggplotly(scat3, tooltip="text")
+pp
+
+
 ```
 
 ¿La relación entre x e y es igual entre los distintos sujetos en estudio? ¿qué sucede al tomar en cuenta otra varible, por ejemplo, cualitativa?  
@@ -66,14 +80,5 @@ ggplot(mtcars, aes(wt,mpg, size = disp, shape = factor(cyl))) +
 ```
 
 
-#Gráficos de barras
+#Gráficos dinámicos
 
-## Apilados con paleta de colores definida
-
-```{r}
-# palette <- c(automatic = '#357EB8', manual = '#E41A1C')
-# ggplot(mtcars, aes(as.factor(cyl), fill = fam)) + 
-#   geom_bar() + 
-#   labs(x= 'Number of cylinders') +
-# scale_fill_manual("Transmission", values = palette)
-```
