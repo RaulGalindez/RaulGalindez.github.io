@@ -47,17 +47,50 @@ Tenemos :
 
 Un buen aprach es usar ´pairs()´ funtion para explorar visualmente la relación entre las variables:
 
-```{r EDA, echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE,}
+```{r EDA, echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE}
 #pairs(nyc[,3:7])
-paquetes_procesamiento <- c('GGally','ggplot2') 
-lapply(paquetes_procesamiento, require, character.only = T)
+library('GGally')
+library('ggplot2')
 
 ggpairs(nyc[,3:7]) 
 ```
 
 - Podemos ver que la variable que más se relaciona, linealmente,  con el precio medio es la puntuación obtenida por la decoración del lugar. 
-- Las variables que más se relacionan entre sí, es la puntruación de la decoración y del sercicio.     
+- Las variables que más se relacionan entre sí, es la puntruación de la decoración y del servicio.     
 - Para variables dicotómicas`east`, estos scatter plots no muestran mucha concluyente.
 
+¿hay alguna diferencia en precio entre los restaurantes del lado este y el oeste de la 5ta avenida?
+
+```{r east_vs_west, echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE}
+east_vs_west <- nyc %>%
+  group_by (East) %>%
+  summarize(mean_price = mean(Price))
+
+east_vs_west
+```
+
+En promedio, los precios en el lado este de la 5ta avenida son de `r round(east_vs_west[2,2] - east_vs_west[1,2],2)` USD superiores al precio medio en el lado oeste, esto es `r round(east_vs_west[2,2]/east_vs_west[1,2]-1,2)`% mayor.
+
+¿Lo anterior se da *per se* por la ubicación misma de los restaurantes o más bien por el hecho de que los restaurantes ubicados al este, tienen mejor comida?
+
+Otra cuestión importante es: ¿cómo varia el precio de los platos respecto a la calidad de la comida  y el servicio recibido? 
+
+```{r}
+lm(Price ~ Food + East, data = nyc)
+```
+
+Cuando introducimos una variable cualitativa dicotómica en nuestro modelo, pasamos a estar en presencia de un modelo de pendientes paralelas (parallel slopes model), en este caso la variable 
+
+De la anterior salida tenemos que: 
+- Por cada punto adicional en el review de la calidade la comida, el precio promedio de la comida incrementa en 2.875 USD, despues de controlar el efecto de la locación del restaurante.
+- El estar en el lado este de la 5ta avenida agrega 1.46 USD al precio medio de la comida, controlando el efecto de la calidad de la comida.
 
 
+Pendiente: buscar una visualización para un gráfico con dos vairables explciativas numericas (sería el plano , pero en DataCamp no dice como se hace)
+
+Un buen paso a paso para un análisis de regresión multiple es: 
+- Analizar la asociación entre las variables de insumo --> diagrama de dispersín y correlación bivariada.
+- validar el modelo --> Tabla ANOVA
+- ¿qué tanto explica el modelo? --> coeficiente de determinación ajustado \( R^2 \)
+- Determinar los coeficientes de nuestro modelo y qué tanto aportan a la explicación de la variable en estudio.
+- Predecir los valores de nuestra variable usando el  modelo ajustado.

@@ -356,22 +356,38 @@ El dataset incluye el valor del precio medio (USD) de un plato (incluye una bebi
 <h1>Análisis Exploratorio de Datos</h1>
 <p>¿cómo están distribuidas las variables? ¿cómo se relacionan una con la otra? ¿qué patrones representan?</p>
 <p>Un buen aprach es usar ´pairs()´ funtion para explorar visualmente la relación entre las variables:</p>
-<pre><code>FALSE Loading required package: GGally</code></pre>
 <pre><code>FALSE Registered S3 method overwritten by &#39;GGally&#39;:
 FALSE   method from   
 FALSE   +.gg   ggplot2</code></pre>
-<pre><code>FALSE [[1]]
-FALSE [1] TRUE
-FALSE 
-FALSE [[2]]
-FALSE [1] TRUE</code></pre>
 <p><img src="regresion_muliple_logit_files/figure-html/eda-1.png" width="672" /></p>
 <ul>
 <li>Podemos ver que la variable que más se relaciona, linealmente, con el precio medio es la puntuación obtenida por la decoración del lugar.</li>
-<li>Las variables que más se relacionan entre sí, es la puntruación de la decoración y del sercicio.<br />
+<li>Las variables que más se relacionan entre sí, es la puntruación de la decoración y del servicio.<br />
 </li>
 <li>Para variables dicotómicas<code>east</code>, estos scatter plots no muestran mucha concluyente.</li>
 </ul>
+<p>¿hay alguna diferencia en precio entre los restaurantes del lado este y el oeste de la 5ta avenida?</p>
+<pre><code>FALSE `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>FALSE # A tibble: 2 x 2
+FALSE    East mean_price
+FALSE   &lt;int&gt;      &lt;dbl&gt;
+FALSE 1     0       40.4
+FALSE 2     1       44.0</code></pre>
+<p>En promedio, los precios en el lado este de la 5ta avenida son de 3.58 USD superiores al precio medio en el lado oeste, esto es 0.09% mayor.</p>
+<p>¿Lo anterior se da <em>per se</em> por la ubicación misma de los restaurantes o más bien por el hecho de que los restaurantes ubicados al este, tienen mejor comida?</p>
+<p>Otra cuestión importante es: ¿cómo varia el precio de los platos respecto a la calidad de la comida y el servicio recibido?</p>
+<pre class="r"><code>lm(Price ~ Food + East, data = nyc)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Price ~ Food + East, data = nyc)
+## 
+## Coefficients:
+## (Intercept)         Food         East  
+##     -17.430        2.875        1.459</code></pre>
+<p>Cuando introducimos una variable cualitativa dicotómica en nuestro modelo, pasamos a estar en presencia de un modelo de pendientes paralelas (parallel slopes model), en este caso la variable</p>
+<p>De la anterior salida tenemos que: - Por cada punto adicional en el review de la calidade la comida, el precio promedio de la comida incrementa en 2.875 USD, despues de controlar el efecto de la locación del restaurante. - El estar en el lado este de la 5ta avenida agrega 1.46 USD al precio medio de la comida, controlando el efecto de la calidad de la comida.</p>
+<p>Pendiente: buscar una visualización para un gráfico con dos vairables explciativas numericas (sería el plano , pero en DataCamp no dice como se hace)</p>
+<p>Un buen paso a paso para un análisis de regresión multiple es: - Analizar la asociación entre las variables de insumo –&gt; diagrama de dispersín y correlación bivariada. - validar el modelo –&gt; Tabla ANOVA - ¿qué tanto explica el modelo? –&gt; coeficiente de determinación ajustado <span class="math inline">\(R^2\)</span> - Determinar los coeficientes de nuestro modelo y qué tanto aportan a la explicación de la variable en estudio. - Predecir los valores de nuestra variable usando el modelo ajustado.</p>
 </div>
 
 <p>Copyright &copy; 2020 Raúl Galíndez, Inc. All rights reserved.</p>

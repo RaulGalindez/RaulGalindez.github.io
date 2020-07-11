@@ -1,13 +1,13 @@
 name: "my-website"
 output_dir: "."
 navbar:
-  title: "My Website"
+  title: "Raúl Galíndez"
   left:
     - text: "Home"
       icon: fa-home
       href: index.html
-    - text: "Graficando"
-      href: graficando.html      
+    - text: "Visualización"
+      href: visualizacion.html      
       icon: fa-bar-chart
     - text: "RLM + Logit"
       href: regresion_muliple_logit.html      
