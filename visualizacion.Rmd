@@ -12,9 +12,8 @@ knitr::include_graphics ('img/graph2.jpg')
 Agregaremos una linea de ajuste usando el modelo lineal general + los respectibos intervalos de confianza de las bandas.
 
 
-```{r scatter_plots_3_var_cuanti}
+```{r scatter_plots_3_var_cuanti,echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE}
 library(ggplot2)
-library(plotly)
 
 scat3 <- ggplot(mtcars, aes(wt, mpg, color = disp)) + 
   geom_point() + 
@@ -23,20 +22,16 @@ scat3 <- ggplot(mtcars, aes(wt, mpg, color = disp)) +
   labs(x = 'Weight', y= 'Miles/(US) gallon')
 
 scat3
-
-pp <- ggplotly(scat3, tooltip="text")
-pp
-
-
 ```
 
 ¿La relación entre x e y es igual entre los distintos sujetos en estudio? ¿qué sucede al tomar en cuenta otra varible, por ejemplo, cualitativa?  
 Veamos
 
 ```{r}
+diamonds <- read.csv(file = 'data/diamonds.csv')
 ggplot(diamonds, aes(carat, price, color = clarity)) +
   geom_point(alpha = 0.3) + 
-  geom_smooth()+
+  geom_smooth() +
   theme_minimal()
 ```
 
@@ -81,4 +76,13 @@ ggplot(mtcars, aes(wt,mpg, size = disp, shape = factor(cyl))) +
 
 
 #Gráficos dinámicos
+
+Un gráfico hecho con ggplot puede ser convertido en uno dinámico con la función `ggplotly()` de la librería `plotly`
+
+
+```{r scat3_dinamic}
+library(plotly)
+pp <- ggplotly(scat3, tooltip="text")
+pp
+```
 
