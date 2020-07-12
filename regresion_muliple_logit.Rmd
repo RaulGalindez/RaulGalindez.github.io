@@ -98,23 +98,48 @@ east_vs_west <- nyc %>%
 east_vs_west
 ```
 
-En promedio, los precios en el lado este de la 5ta avenida son de `r round(east_vs_west[2,2] - east_vs_west[1,2],2)` USD superiores al precio medio en el lado oeste, esto es `r round(east_vs_west[2,2]/east_vs_west[1,2]-1,2)`% mayor.
+En promedio, los precios en el lado este de la 5ta avenida son de `r round(east_vs_west[2,2] - east_vs_west[1,2],2)` USD superiores al precio medio en el lado oeste, esto es `r round(east_vs_west[2,2]/east_vs_west[1,2]-1,3)*100`% mayor.
 
 ¿Lo anterior se da *per se* por la ubicación misma de los restaurantes o más bien por el hecho de que los restaurantes ubicados al este, tienen mejor comida?
 
 Otra cuestión importante es: ¿cómo varia el precio de los platos respecto a la calidad de la comida  y el servicio recibido? 
 
-Cuando introducimos una variable cualitativa dicotómica en nuestro modelo, pasamos a estar en presencia de un modelo de pendientes paralelas (parallel slopes model), en este caso la variable East.
+# Parallel slopes models
+Cuando introducimos una variable cualitativa dicotómica en nuestro modelo, pasamos a estar en presencia de un modelo de pendientes paralelas (parallel slopes model), en este caso la variable `east`.
 
 
 ```{r}
-lm(Price ~ Food + East, data = nyc)
+lm(Price ~ Food + factor(East), data = nyc)
 ```
 
 
 De la anterior salida tenemos que: 
 - Por cada punto adicional en el review de la calidade la comida, el precio promedio de la comida incrementa en 2.875 USD, despues de controlar el efecto de la locación del restaurante.  
 - El estar en el lado este de la 5ta avenida agrega 1.46 USD al precio medio de la comida, controlando el efecto de la calidad de la comida.
+
+Visualización del modelo:
+
+
+
+```{r}
+library(broom)
+model1 <- lm(Price ~ Food + East, data = nyc)
+
+augmented_mod <- augment(model1)
+glimpse(augmented_mod)
+
+```
+
+
+```{r}
+# scatterplot, with color
+data_space <- ggplot(augmented_mod, aes(x = Food, y = Price), color = East) + 
+  geom_point()
+  
+# single call to geom_line()
+data_space + 
+  geom_line(aes(y = .fitted),)
+```
 
 (INTRODUCIR ACÁ LA GRÁFICA DEL MODELO DE PENDIENTES PARALELAS, ESTÁ AL PRINCIPIO DE LA LECCION (NO ESTÁ EN LA PARTE DEL EJEMPLO DE LOS RESTAURANTES)
 

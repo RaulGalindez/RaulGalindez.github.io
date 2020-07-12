@@ -394,20 +394,48 @@ FALSE    East mean_price
 FALSE   &lt;int&gt;      &lt;dbl&gt;
 FALSE 1     0       40.4
 FALSE 2     1       44.0</code></pre>
-<p>En promedio, los precios en el lado este de la 5ta avenida son de 3.58 USD superiores al precio medio en el lado oeste, esto es 0.09% mayor.</p>
+<p>En promedio, los precios en el lado este de la 5ta avenida son de 3.58 USD superiores al precio medio en el lado oeste, esto es 8.9% mayor.</p>
 <p>¿Lo anterior se da <em>per se</em> por la ubicación misma de los restaurantes o más bien por el hecho de que los restaurantes ubicados al este, tienen mejor comida?</p>
 <p>Otra cuestión importante es: ¿cómo varia el precio de los platos respecto a la calidad de la comida y el servicio recibido?</p>
-<p>Cuando introducimos una variable cualitativa dicotómica en nuestro modelo, pasamos a estar en presencia de un modelo de pendientes paralelas (parallel slopes model), en este caso la variable East.</p>
-<pre class="r"><code>lm(Price ~ Food + East, data = nyc)</code></pre>
+</div>
+<div id="parallel-slopes-models" class="section level1">
+<h1>Parallel slopes models</h1>
+<p>Cuando introducimos una variable cualitativa dicotómica en nuestro modelo, pasamos a estar en presencia de un modelo de pendientes paralelas (parallel slopes model), en este caso la variable <code>east</code>.</p>
+<pre class="r"><code>lm(Price ~ Food + factor(East), data = nyc)</code></pre>
 <pre><code>## 
 ## Call:
-## lm(formula = Price ~ Food + East, data = nyc)
+## lm(formula = Price ~ Food + factor(East), data = nyc)
 ## 
 ## Coefficients:
-## (Intercept)         Food         East  
-##     -17.430        2.875        1.459</code></pre>
+##   (Intercept)           Food  factor(East)1  
+##       -17.430          2.875          1.459</code></pre>
 <p>De la anterior salida tenemos que: - Por cada punto adicional en el review de la calidade la comida, el precio promedio de la comida incrementa en 2.875 USD, despues de controlar el efecto de la locación del restaurante.<br />
 - El estar en el lado este de la 5ta avenida agrega 1.46 USD al precio medio de la comida, controlando el efecto de la calidad de la comida.</p>
+<p>Visualización del modelo:</p>
+<pre class="r"><code>library(broom)
+model1 &lt;- lm(Price ~ Food + East, data = nyc)
+
+augmented_mod &lt;- augment(model1)
+glimpse(augmented_mod)</code></pre>
+<pre><code>## Rows: 168
+## Columns: 9
+## $ Price      &lt;int&gt; 43, 32, 34, 41, 54, 52, 34, 34, 39, 44, 45, 47, 52, 35, ...
+## $ Food       &lt;int&gt; 22, 20, 21, 20, 24, 22, 22, 20, 22, 21, 19, 21, 21, 19, ...
+## $ East       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+## $ .fitted    &lt;dbl&gt; 45.81397, 40.06455, 42.93926, 40.06455, 51.56338, 45.813...
+## $ .resid     &lt;dbl&gt; -2.8139684, -8.0645539, -8.9392611, 0.9354461, 2.4366172...
+## $ .std.resid &lt;dbl&gt; -0.39245231, -1.12158953, -1.24397946, 0.13009852, 0.343...
+## $ .hat       &lt;dbl&gt; 0.021640632, 0.016155247, 0.017323431, 0.016155247, 0.03...
+## $ .sigma     &lt;dbl&gt; 7.267757, 7.243380, 7.236974, 7.270778, 7.268558, 7.2547...
+## $ .cooksd    &lt;dbl&gt; 1.135597e-03, 6.885471e-03, 9.093445e-03, 9.264255e-05, ...</code></pre>
+<pre class="r"><code># scatterplot, with color
+data_space &lt;- ggplot(augmented_mod, aes(x = Food, y = Price), color = East) + 
+  geom_point()
+  
+# single call to geom_line()
+data_space + 
+  geom_line(aes(y = .fitted),)</code></pre>
+<p><img src="regresion_muliple_logit_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>(INTRODUCIR ACÁ LA GRÁFICA DEL MODELO DE PENDIENTES PARALELAS, ESTÁ AL PRINCIPIO DE LA LECCION (NO ESTÁ EN LA PARTE DEL EJEMPLO DE LOS RESTAURANTES)</p>
 <p>¿qUÉ papel juega el servicio en el precio de los platos? ¿Qué tanto más están dispuestos los clientes a pagar por un mejor servicio, controlando las variables antesiores?</p>
 <p>Acá pasamos propiamente a un modelo de regresión múltiple, al incorporar dos variables cuantitativas:</p>

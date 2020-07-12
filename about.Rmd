@@ -2,4 +2,4 @@
 title: "About This Website"
 ---
 
-Publico herramientas del uso diario en Data Science
+Herramientas usadas comúnmente en Data Science
