@@ -24,6 +24,9 @@ __Manos a la obra__
 ```{r include=FALSE}
 library(dplyr)
 nyc <- read.csv(file = 'data/nyc.csv')
+nyc$Price <- as.numeric(nyc$Price)
+nyc$Food <- as.numeric(nyc$Food)
+nyc$East <- as.factor(nyc$East)
 ```
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
@@ -120,28 +123,25 @@ De la anterior salida tenemos que:
 Visualización del modelo:
 
 
-
 ```{r}
 library(broom)
-model1 <- lm(Price ~ Food + East, data = nyc)
+mod <- lm(Price ~ Food + East, data = nyc)
 
-augmented_mod <- augment(model1)
+augmented_mod <- augment(mod)
 glimpse(augmented_mod)
-
 ```
 
 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
 # scatterplot, with color
-data_space <- ggplot(augmented_mod, aes(x = Food, y = Price), color = East) + 
+data_space <- ggplot(augmented_mod, aes(x = Food, y = Price, color = East)) + 
   geom_point()
   
 # single call to geom_line()
 data_space + 
-  geom_line(aes(y = .fitted),)
+  geom_line(aes(y = .fitted))
 ```
 
-(INTRODUCIR ACÁ LA GRÁFICA DEL MODELO DE PENDIENTES PARALELAS, ESTÁ AL PRINCIPIO DE LA LECCION (NO ESTÁ EN LA PARTE DEL EJEMPLO DE LOS RESTAURANTES)
 
 ¿qUÉ papel juega el servicio en el precio de los platos?
 ¿Qué tanto más están dispuestos los clientes a pagar por un mejor servicio, controlando las variables antesiores?
