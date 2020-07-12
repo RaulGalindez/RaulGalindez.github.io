@@ -12,7 +12,7 @@ knitr::include_graphics ('img/graph2.jpg')
 Agregaremos una linea de ajuste usando el modelo lineal general + los respectibos intervalos de confianza de las bandas.
 
 
-```{r scatter_plots_3_var_cuanti,echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE}
+```{r scatter_plots_3_var_cuanti,echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
 library(ggplot2)
 
 scat3 <- ggplot(mtcars, aes(wt, mpg, color = disp)) + 
@@ -27,7 +27,7 @@ scat3
 ¿La relación entre x e y es igual entre los distintos sujetos en estudio? ¿qué sucede al tomar en cuenta otra varible, por ejemplo, cualitativa?  
 Veamos
 
-```{r}
+```{r diamonds, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
 diamonds <- read.csv(file = 'data/diamonds.csv')
 ggplot(diamonds, aes(carat, price, color = clarity)) +
   geom_point(alpha = 0.3) + 
@@ -38,28 +38,30 @@ ggplot(diamonds, aes(carat, price, color = clarity)) +
 ## Graficando cuatro (4) variables en un mismo plot 
 
 Se puede  controlar el tamaño del punto ploteado, el color y el relleno de acuerdo a los valores que tomen ciertas variables  
-```{r scatter_plots_2_cuanti_1_cuali}
+```{r scatter_plots_2_cuanti_1_cuali,echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
 ggplot(mtcars, aes(wt, mpg, size = disp, color = disp)) + 
   geom_point() + 
-  theme_minimal()
+  theme_minimal()+
   labs(x = 'Weight', y= 'Miles/(US) gallon')
 ```
 
 En ocasiones cuando una o las dos variables a graficar son categóricas,podemos presenciar overplotting, causando que no dimensionemos claramente el fenómeno estudiado. 
 Para resolver lo anterior, podemos introducir un pequeño ruido en la representación de los puntos y aplicar un alpha (valor que regula la transparencia de los markers) y así lograr ver mejor la relación entre las variables.
 
-Veamos sin jitter ni alpha
-```{r}
+Veamos sin jitter ni alpha  
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
 ggplot (mtcars, 
         aes((cyl), mpg),color = as.factor(am)) + 
   geom_point()+
   theme_minimal()
 ```
+
 Notemos que aunque `cyl` es una variable discreta, R le da un tratamiento continuo y por eso vemos espacios entre 4 y 5 o 6 y 8, lo cual no tiene sentido. 
 Reparemos esto, además de agregar jitter y opacidad a los puntos.
 
 Con jitter  y alpha =  0.2
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
 ggplot (mtcars,aes(as.factor(cyl), mpg),color = as.factor(am)) + 
   geom_point(alpha = 0.2,position = position_jitter(width = 0.1))+
   theme_minimal()
@@ -68,19 +70,19 @@ ggplot (mtcars,aes(as.factor(cyl), mpg),color = as.factor(am)) +
 
 Podemos usar una variable cuantitativa como size y así enriquecer nuestro gráfico, además que la forma cambie de acuerdo al valor de una variable (discreta)
 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
 ggplot(mtcars, aes(wt,mpg, size = disp, shape = factor(cyl))) +
   geom_point(alpha= 0.5)+
   theme_minimal()
 ```
 
 
-#Gráficos dinámicos
+# Gráficos dinámicos
 
 Un gráfico hecho con ggplot puede ser convertido en uno dinámico con la función `ggplotly()` de la librería `plotly`
 
 
-```{r scat3_dinamic}
+```{r scat3_dinamic, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
 library(plotly)
 pp <- ggplotly(scat3, tooltip="text")
 pp

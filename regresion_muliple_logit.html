@@ -323,52 +323,72 @@ $(document).ready(function () {
 
 <p><strong><em>Caso: Restaurantes italianos en NYC</em></strong></p>
 <p><img src="img/italian_food_3.jpg" /><!-- --></p>
+<div id="introducción" class="section level1">
+<h1>Introducción</h1>
 <p>Usaremos un dataset que contiene los reviews hechos por <a href="https://www.zagat.com/about-us" target="_blank">Zagat</a> (en 2001) a 168 restauranres italianos en New York.</p>
 <p>Cada restaurante recibe una puntuación del 0 al 30 por la calidad de su comida, la decoración y el servicio recibido.<br />
-El dataset incluye el valor del precio medio (USD) de un plato (incluye una bebida y la propina)</p>
+El dataset incluye el valor del precio medio (USD) de un plato (incluye una bebida y la propina).</p>
 <p>Responderemos a la interrogante: <em>¿qué factores contribuyen al precio medio de un plato en un restaurante italiano en NYC?</em></p>
 <p><strong>Manos a la obra</strong></p>
 <p>¿cómo está estructurado el dataset?</p>
-<pre class="r"><code>glimpse(nyc)</code></pre>
-<pre><code>## Rows: 168
-## Columns: 7
-## $ Case       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1...
-## $ Restaurant &lt;chr&gt; &quot;Daniella Ristorante&quot;, &quot;Tello&#39;s Ristorante&quot;, &quot;Biricchino...
-## $ Price      &lt;int&gt; 43, 32, 34, 41, 54, 52, 34, 34, 39, 44, 45, 47, 52, 35, ...
-## $ Food       &lt;int&gt; 22, 20, 21, 20, 24, 22, 22, 20, 22, 21, 19, 21, 21, 19, ...
-## $ Decor      &lt;int&gt; 18, 19, 13, 20, 19, 22, 16, 18, 19, 17, 17, 19, 19, 17, ...
-## $ Service    &lt;int&gt; 20, 19, 18, 17, 21, 21, 21, 21, 22, 19, 20, 21, 20, 19, ...
-## $ East       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</code></pre>
+<pre><code>FALSE Rows: 168
+FALSE Columns: 7
+FALSE $ Case       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1...
+FALSE $ Restaurant &lt;chr&gt; &quot;Daniella Ristorante&quot;, &quot;Tello&#39;s Ristorante&quot;, &quot;Biricchino...
+FALSE $ Price      &lt;int&gt; 43, 32, 34, 41, 54, 52, 34, 34, 39, 44, 45, 47, 52, 35, ...
+FALSE $ Food       &lt;int&gt; 22, 20, 21, 20, 24, 22, 22, 20, 22, 21, 19, 21, 21, 19, ...
+FALSE $ Decor      &lt;int&gt; 18, 19, 13, 20, 19, 22, 16, 18, 19, 17, 17, 19, 19, 17, ...
+FALSE $ Service    &lt;int&gt; 20, 19, 18, 17, 21, 21, 21, 21, 22, 19, 20, 21, 20, 19, ...
+FALSE $ East       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</code></pre>
 <p>Tenemos :</p>
 <ul>
-<li><strong><code>Case</code></strong>:</li>
-<li><code>Restaurante</code>: nombre del restaurante.</li>
-<li><code>Price</code>: precio medio de un plato en el restaurante.</li>
-<li><code>Food</code>: puntuación recibida por la comida.<br />
+<li><strong><code>Case</code></strong>: identificador único del restaurante.</li>
+<li><strong><code>Restaurante</code></strong>: nombre del restaurante.</li>
+<li><strong><code>Price</code></strong>: precio medio de un plato en el restaurante.</li>
+<li><strong><code>Food</code></strong>: puntuación recibida por la comida.<br />
 </li>
-<li><code>Decor</code>: puntuación recibida por la decoración del lugar.<br />
+<li><strong><code>Decor</code></strong>: puntuación recibida por la decoración del lugar.<br />
 </li>
-<li><code>Service</code>: puntuación recibida por el servicio recibido.<br />
+<li><strong><code>Service</code></strong>`: puntuación recibida por el servicio recibido.<br />
 </li>
-<li><code>East</code>: variable dicotómica que representa si el restaurante está al este o al oeste de Fifth Avenue.</li>
+<li><strong><code>East</code></strong>: variable dicotómica que representa si el restaurante está al este o al oeste de Fifth Avenue.</li>
 </ul>
+</div>
 <div id="análisis-exploratorio-de-datos" class="section level1">
 <h1>Análisis Exploratorio de Datos</h1>
-<p>¿cómo están distribuidas las variables? ¿cómo se relacionan una con la otra? ¿qué patrones representan?</p>
-<p>Un buen aprach es usar ´pairs()´ funtion para explorar visualmente la relación entre las variables:</p>
-<pre><code>FALSE Loading required package: ggplot2</code></pre>
-<pre><code>FALSE Registered S3 method overwritten by &#39;GGally&#39;:
-FALSE   method from   
-FALSE   +.gg   ggplot2</code></pre>
+<p>En esta etapa buscamos responder a:<br />
+- ¿cómo están distribuidas las variables?.<br />
+- ¿cómo se relacionan una con la otra?.<br />
+- ¿qué patrones representan?.</p>
+<p>Un buen approach es usar ´ggpairs()´ function de la librería <code>GGally</code> para explorar visualmente la relación entre las variables y conocer el coeficeinte de correlación lineal de pearson asociados:</p>
 <p><img src="regresion_muliple_logit_files/figure-html/eda-1.png" width="672" /></p>
 <ul>
-<li>Podemos ver que la variable que más se relaciona, linealmente, con el precio medio es la puntuación obtenida por la decoración del lugar.</li>
-<li>Las variables que más se relacionan entre sí, es la puntruación de la decoración y del servicio.<br />
+<li>Podemos ver que existe una relación lineal importante entre las variables en cuestión, siendo la que más fuerte está relacionado con el precio <code>Decor</code>, la decoración del lugar.<br />
+</li>
+<li>Las variables que más se relacionan entre sí, es la puntuación del servicio y la decoración del lugar.<br />
 </li>
 <li>Para variables dicotómicas<code>east</code>, estos scatter plots no muestran mucha concluyente.</li>
 </ul>
+<p>Otra forma bastante gráfica de ver la correlación entre las varibles es a través de un correlation heatmaps:</p>
+<p><img src="regresion_muliple_logit_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="importancia-de-las-variables-en-el-precio" class="section level1">
+<h1>Importancia de las variables en el precio</h1>
+<p>Es esperable que la calidad de la comida, o al menos la percepción que se tenga de la misma, esté relacionada con el precio de esta. Chequeemos esto con un modelo de regresión lineal simple (incorporemos un diagrama de dispersión que muestre cómo se relacionan estas variables:</p>
+<p><img src="regresion_muliple_logit_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre><code>FALSE 
+FALSE Call:
+FALSE lm(formula = Price ~ Food, data = nyc)
+FALSE 
+FALSE Coefficients:
+FALSE (Intercept)         Food  
+FALSE     -17.832        2.939</code></pre>
+<p>Cada punto adicional en la calificación de la calidad de la comida está asociado con un incremento de 2.94 USD en el precio medio de la comida. ¿qué tan grande es este efecto? Esto hay que sopesarlo con el nivel de los precios.</p>
+<pre class="r"><code>summary(nyc$Price)</code></pre>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    19.0    36.0    43.0    42.7    50.0    65.0</code></pre>
+<p>Tomando en cuenta el precio promedio, un cambio adicional de un punto que trae como consecuencia, en promedio, un aumento de 2.94 USD en el precio, no es nada despreciable.</p>
 <p>¿hay alguna diferencia en precio entre los restaurantes del lado este y el oeste de la 5ta avenida?</p>
-<pre><code>FALSE `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
 <pre><code>FALSE # A tibble: 2 x 2
 FALSE    East mean_price
 FALSE   &lt;int&gt;      &lt;dbl&gt;
@@ -377,6 +397,7 @@ FALSE 2     1       44.0</code></pre>
 <p>En promedio, los precios en el lado este de la 5ta avenida son de 3.58 USD superiores al precio medio en el lado oeste, esto es 0.09% mayor.</p>
 <p>¿Lo anterior se da <em>per se</em> por la ubicación misma de los restaurantes o más bien por el hecho de que los restaurantes ubicados al este, tienen mejor comida?</p>
 <p>Otra cuestión importante es: ¿cómo varia el precio de los platos respecto a la calidad de la comida y el servicio recibido?</p>
+<p>Cuando introducimos una variable cualitativa dicotómica en nuestro modelo, pasamos a estar en presencia de un modelo de pendientes paralelas (parallel slopes model), en este caso la variable East.</p>
 <pre class="r"><code>lm(Price ~ Food + East, data = nyc)</code></pre>
 <pre><code>## 
 ## Call:
@@ -385,10 +406,64 @@ FALSE 2     1       44.0</code></pre>
 ## Coefficients:
 ## (Intercept)         Food         East  
 ##     -17.430        2.875        1.459</code></pre>
-<p>Cuando introducimos una variable cualitativa dicotómica en nuestro modelo, pasamos a estar en presencia de un modelo de pendientes paralelas (parallel slopes model), en este caso la variable</p>
-<p>De la anterior salida tenemos que: - Por cada punto adicional en el review de la calidade la comida, el precio promedio de la comida incrementa en 2.875 USD, despues de controlar el efecto de la locación del restaurante. - El estar en el lado este de la 5ta avenida agrega 1.46 USD al precio medio de la comida, controlando el efecto de la calidad de la comida.</p>
-<p>Pendiente: buscar una visualización para un gráfico con dos vairables explciativas numericas (sería el plano , pero en DataCamp no dice como se hace)</p>
-<p>Un buen paso a paso para un análisis de regresión multiple es: - Analizar la asociación entre las variables de insumo –&gt; diagrama de dispersín y correlación bivariada. - validar el modelo –&gt; Tabla ANOVA - ¿qué tanto explica el modelo? –&gt; coeficiente de determinación ajustado <span class="math inline">\(R^2\)</span> - Determinar los coeficientes de nuestro modelo y qué tanto aportan a la explicación de la variable en estudio. - Predecir los valores de nuestra variable usando el modelo ajustado.</p>
+<p>De la anterior salida tenemos que: - Por cada punto adicional en el review de la calidade la comida, el precio promedio de la comida incrementa en 2.875 USD, despues de controlar el efecto de la locación del restaurante.<br />
+- El estar en el lado este de la 5ta avenida agrega 1.46 USD al precio medio de la comida, controlando el efecto de la calidad de la comida.</p>
+<p>(INTRODUCIR ACÁ LA GRÁFICA DEL MODELO DE PENDIENTES PARALELAS, ESTÁ AL PRINCIPIO DE LA LECCION (NO ESTÁ EN LA PARTE DEL EJEMPLO DE LOS RESTAURANTES)</p>
+<p>¿qUÉ papel juega el servicio en el precio de los platos? ¿Qué tanto más están dispuestos los clientes a pagar por un mejor servicio, controlando las variables antesiores?</p>
+<p>Acá pasamos propiamente a un modelo de regresión múltiple, al incorporar dos variables cuantitativas:</p>
+</div>
+<div id="fit-model" class="section level1">
+<h1>fit model</h1>
+<pre class="r"><code> lm(Price ~ Food + Service, data = nyc)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Price ~ Food + Service, data = nyc)
+## 
+## Coefficients:
+## (Intercept)         Food      Service  
+##     -21.159        1.495        1.704</code></pre>
+<p>Comparado con el primer modelo donde relacionabamos el precio a la calidad de la comida (enumerar los modelos para poder hacer referencia a ellos en el análisis), en el cual por cada punto adicional en lo referente a la calidad d ela comida, el precio aumentaba 2.94 USD, en este modelo donde incorporamos el servicio como modelo explicativo vemos que al controlar el servicio, lo que aumenta el precio de la comida por la calidad de la misma es 1.49 USD, lo cual es menor que cuando considerabamos solo la comidao incluso la comida y la ubicaciónj del restaurante. Esto quiere dcir que la atención recibida es más determinante que la calidad misma, o dicho de otra manera, dos restaurantes con la mismna puntuación en servicio, solo van a aumentear 1.49 USD en el precio medio, por otro lado, luego de controlar el efecto de la calidad de la comidal, el precio medio aumenta 1.7 uSD por cada punto adicional de la calidad del servicio.</p>
+<p>A lo anterior pdriamos decir que la calidad del servicio modera el efecto que tiene la calidad de la comida en el precuoi medio, si bien considerando solo la caliudad de la comida el efecto era de casi 3 USD, ya controlantdo por el servivcio recibido, este efecto mengua. De igual manera , la calidad de la comida modera el efecto del servicio (Vease el cofeicnete dfe regresión asociadp o al servicio solo)</p>
+<pre class="r"><code> lm(Price ~ Service, data = nyc)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Price ~ Service, data = nyc)
+## 
+## Coefficients:
+## (Intercept)      Service  
+##     -11.978        2.818</code></pre>
+<p>Si bien este ejercicio no tiene en cuenta la multicolinealidad de las variables, en posteriores análisis sería interesnte y necesario analizar la multicolinealidad entre las variables, ya que si bien incorporar variables altasmente correlacionadas no afecta la validez del <span class="math inline">\(R^2\)</span> sí hace que los cofecientes estimados sean inestables (buscar bibliografia e incorporarla). En ocasiones coeficientes que nos lleven a conclusiiones extrañas o poco intuitivas pueden estar relacionadas con la multicolinealidad.</p>
+<p>Efecto de la calidad del servicio, de la comida y la ubicación en el precio de la comida</p>
+<pre class="r"><code>lm(Price ~ Food + Service + East, data = nyc)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Price ~ Food + Service + East, data = nyc)
+## 
+## Coefficients:
+## (Intercept)         Food      Service         East  
+##    -20.8155       1.4863       1.6647       0.9649</code></pre>
+<p>Comparando el efecto que tiene el hecho de que el restauranre se encuentre en el lado Este de la 5ta avenida (controlando por la calidad de la comida y del servicio), este es menor que el impacto que tienen las otras dos variables. Es decir, tomando en cuenta estas 3 variabels, es más importante el efecto de la calidad de la comida y del servicio que la ubicación.</p>
+<p>Los coeficientes asociadasas a la comida y el sertbicvio no tyuvierron cambios imporrantes con respecto a los modelos anteriores.</p>
+<p>Incorporemos las 4 variables a ver qué talco</p>
+<pre class="r"><code>lm(Price ~ Food + Service + Decor + East, data= nyc)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = Price ~ Food + Service + Decor + East, data = nyc)
+## 
+## Coefficients:
+## (Intercept)         Food      Service        Decor         East  
+##  -24.023800     1.538120    -0.002727     1.910087     2.068050</code></pre>
+<p>¿qué podemos decir de los coeficienters anteriores? - El cambio que suffiró el coeficiente asociado a <code>Service</code> puiede estar asociado a la multicolienadlidad (ercordemos que habiamos visto que habia una alta relacion entre la caliudad de la comida, la decoracion y y el servicio).</p>
+<ul>
+<li>Una vez que controlamos la calidad de los alimentos, la decoración y la ubicación, la información adicional transmitida por el servicio es insignificante.</li>
+</ul>
+<p>Ester ejercicio no abarca la inferencia acerca de los parametros,. queda como proximo ejercicio.</p>
+<p>Visualicemos Un buen paso a paso para un análisis de regresión multiple es: - Analizar la asociación entre las variables de insumo –&gt; diagrama de dispersín y correlación bivariada.<br />
+- validar el modelo –&gt; Tabla ANOVA<br />
+- ¿qué tanto explica el modelo? –&gt; coeficiente de determinación ajustado <span class="math inline">\(R^2\)</span><br />
+- Determinar los coeficientes de nuestro modelo y qué tanto aportan a la explicación de la variable en estudio.<br />
+- Predecir los valores de nuestra variable usando el modelo ajustado.</p>
+<p>(ANTES DE DAR POR CERRADO ESTE EJEMPLO, VER TODAS LAS LECCIONES DE ESTE TEMA EN DATA CAMP Y VER QUÉ SE PUEDE INCORPORAR) Buscar la forma de visualizar un modelop de regresion muyltripole con 2 variuables cuantiutativas explicativas (a travces de un plano).</p>
 </div>
 
 <p>Copyright &copy; 2020 Raúl Galíndez, Inc. All rights reserved.</p>
