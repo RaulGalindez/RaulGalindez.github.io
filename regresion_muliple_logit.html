@@ -322,7 +322,7 @@ $(document).ready(function () {
 
 
 <p><strong><em>Caso: Restaurantes italianos en NYC</em></strong></p>
-<p><img src="img/italian_food_3.jpg" /><!-- --></p>
+<p><img src="img/italian_food_3.jpg" width="425" /></p>
 <div id="introducción" class="section level1">
 <h1>Introducción</h1>
 <p>Usaremos un dataset que contiene los reviews hechos por <a href="https://www.zagat.com/about-us" target="_blank">Zagat</a> (en 2001) a 168 restauranres italianos en New York.</p>
@@ -335,11 +335,11 @@ El dataset incluye el valor del precio medio (USD) de un plato (incluye una bebi
 FALSE Columns: 7
 FALSE $ Case       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1...
 FALSE $ Restaurant &lt;chr&gt; &quot;Daniella Ristorante&quot;, &quot;Tello&#39;s Ristorante&quot;, &quot;Biricchino...
-FALSE $ Price      &lt;int&gt; 43, 32, 34, 41, 54, 52, 34, 34, 39, 44, 45, 47, 52, 35, ...
-FALSE $ Food       &lt;int&gt; 22, 20, 21, 20, 24, 22, 22, 20, 22, 21, 19, 21, 21, 19, ...
+FALSE $ Price      &lt;dbl&gt; 43, 32, 34, 41, 54, 52, 34, 34, 39, 44, 45, 47, 52, 35, ...
+FALSE $ Food       &lt;dbl&gt; 22, 20, 21, 20, 24, 22, 22, 20, 22, 21, 19, 21, 21, 19, ...
 FALSE $ Decor      &lt;int&gt; 18, 19, 13, 20, 19, 22, 16, 18, 19, 17, 17, 19, 19, 17, ...
 FALSE $ Service    &lt;int&gt; 20, 19, 18, 17, 21, 21, 21, 21, 22, 19, 20, 21, 20, 19, ...
-FALSE $ East       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</code></pre>
+FALSE $ East       &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...</code></pre>
 <p>Tenemos :</p>
 <ul>
 <li><strong><code>Case</code></strong>: identificador único del restaurante.</li>
@@ -390,10 +390,10 @@ FALSE     -17.832        2.939</code></pre>
 <p>Tomando en cuenta el precio promedio, un cambio adicional de un punto que trae como consecuencia, en promedio, un aumento de 2.94 USD en el precio, no es nada despreciable.</p>
 <p>¿hay alguna diferencia en precio entre los restaurantes del lado este y el oeste de la 5ta avenida?</p>
 <pre><code>FALSE # A tibble: 2 x 2
-FALSE    East mean_price
-FALSE   &lt;int&gt;      &lt;dbl&gt;
-FALSE 1     0       40.4
-FALSE 2     1       44.0</code></pre>
+FALSE   East  mean_price
+FALSE   &lt;fct&gt;      &lt;dbl&gt;
+FALSE 1 0           40.4
+FALSE 2 1           44.0</code></pre>
 <p>En promedio, los precios en el lado este de la 5ta avenida son de 3.58 USD superiores al precio medio en el lado oeste, esto es 8.9% mayor.</p>
 <p>¿Lo anterior se da <em>per se</em> por la ubicación misma de los restaurantes o más bien por el hecho de que los restaurantes ubicados al este, tienen mejor comida?</p>
 <p>Otra cuestión importante es: ¿cómo varia el precio de los platos respecto a la calidad de la comida y el servicio recibido?</p>
@@ -413,30 +413,22 @@ FALSE 2     1       44.0</code></pre>
 - El estar en el lado este de la 5ta avenida agrega 1.46 USD al precio medio de la comida, controlando el efecto de la calidad de la comida.</p>
 <p>Visualización del modelo:</p>
 <pre class="r"><code>library(broom)
-model1 &lt;- lm(Price ~ Food + East, data = nyc)
+mod &lt;- lm(Price ~ Food + East, data = nyc)
 
-augmented_mod &lt;- augment(model1)
+augmented_mod &lt;- augment(mod)
 glimpse(augmented_mod)</code></pre>
 <pre><code>## Rows: 168
 ## Columns: 9
-## $ Price      &lt;int&gt; 43, 32, 34, 41, 54, 52, 34, 34, 39, 44, 45, 47, 52, 35, ...
-## $ Food       &lt;int&gt; 22, 20, 21, 20, 24, 22, 22, 20, 22, 21, 19, 21, 21, 19, ...
-## $ East       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
+## $ Price      &lt;dbl&gt; 43, 32, 34, 41, 54, 52, 34, 34, 39, 44, 45, 47, 52, 35, ...
+## $ Food       &lt;dbl&gt; 22, 20, 21, 20, 24, 22, 22, 20, 22, 21, 19, 21, 21, 19, ...
+## $ East       &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,...
 ## $ .fitted    &lt;dbl&gt; 45.81397, 40.06455, 42.93926, 40.06455, 51.56338, 45.813...
 ## $ .resid     &lt;dbl&gt; -2.8139684, -8.0645539, -8.9392611, 0.9354461, 2.4366172...
 ## $ .std.resid &lt;dbl&gt; -0.39245231, -1.12158953, -1.24397946, 0.13009852, 0.343...
 ## $ .hat       &lt;dbl&gt; 0.021640632, 0.016155247, 0.017323431, 0.016155247, 0.03...
 ## $ .sigma     &lt;dbl&gt; 7.267757, 7.243380, 7.236974, 7.270778, 7.268558, 7.2547...
 ## $ .cooksd    &lt;dbl&gt; 1.135597e-03, 6.885471e-03, 9.093445e-03, 9.264255e-05, ...</code></pre>
-<pre class="r"><code># scatterplot, with color
-data_space &lt;- ggplot(augmented_mod, aes(x = Food, y = Price), color = East) + 
-  geom_point()
-  
-# single call to geom_line()
-data_space + 
-  geom_line(aes(y = .fitted),)</code></pre>
 <p><img src="regresion_muliple_logit_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>(INTRODUCIR ACÁ LA GRÁFICA DEL MODELO DE PENDIENTES PARALELAS, ESTÁ AL PRINCIPIO DE LA LECCION (NO ESTÁ EN LA PARTE DEL EJEMPLO DE LOS RESTAURANTES)</p>
 <p>¿qUÉ papel juega el servicio en el precio de los platos? ¿Qué tanto más están dispuestos los clientes a pagar por un mejor servicio, controlando las variables antesiores?</p>
 <p>Acá pasamos propiamente a un modelo de regresión múltiple, al incorporar dos variables cuantitativas:</p>
 </div>
@@ -468,7 +460,7 @@ data_space +
 ## lm(formula = Price ~ Food + Service + East, data = nyc)
 ## 
 ## Coefficients:
-## (Intercept)         Food      Service         East  
+## (Intercept)         Food      Service        East1  
 ##    -20.8155       1.4863       1.6647       0.9649</code></pre>
 <p>Comparando el efecto que tiene el hecho de que el restauranre se encuentre en el lado Este de la 5ta avenida (controlando por la calidad de la comida y del servicio), este es menor que el impacto que tienen las otras dos variables. Es decir, tomando en cuenta estas 3 variabels, es más importante el efecto de la calidad de la comida y del servicio que la ubicación.</p>
 <p>Los coeficientes asociadasas a la comida y el sertbicvio no tyuvierron cambios imporrantes con respecto a los modelos anteriores.</p>
@@ -479,7 +471,7 @@ data_space +
 ## lm(formula = Price ~ Food + Service + Decor + East, data = nyc)
 ## 
 ## Coefficients:
-## (Intercept)         Food      Service        Decor         East  
+## (Intercept)         Food      Service        Decor        East1  
 ##  -24.023800     1.538120    -0.002727     1.910087     2.068050</code></pre>
 <p>¿qué podemos decir de los coeficienters anteriores? - El cambio que suffiró el coeficiente asociado a <code>Service</code> puiede estar asociado a la multicolienadlidad (ercordemos que habiamos visto que habia una alta relacion entre la caliudad de la comida, la decoracion y y el servicio).</p>
 <ul>

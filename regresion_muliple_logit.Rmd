@@ -146,7 +146,6 @@ data_space +
 ¿qUÉ papel juega el servicio en el precio de los platos?
 ¿Qué tanto más están dispuestos los clientes a pagar por un mejor servicio, controlando las variables antesiores?
 
-
 Acá pasamos propiamente a un modelo de regresión múltiple, al incorporar dos variables cuantitativas: 
 
 # fit model
