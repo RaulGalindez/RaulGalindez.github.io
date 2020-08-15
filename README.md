@@ -7,7 +7,7 @@
 
 ## Herramientas y lenguajes :
 
-[<img align="left" alt="RStudio" width="26px" src="img/rstudio.png" />]()
+[<img align="left" alt="RStudio" width="26px" src="C:/Users/GalindezR/Desktop/raulgalindez.github.io/img/rstudio.png" />]()
 [<img align="left" alt="Python" width="26px" src="img/Python.png" />]()
 [<img align="left" alt="SAS" width="26px" src="img/sas_favicon.ico" />]()
 [<img align="left" alt="SPSS" width="26px" src="img/SPSS.PNG" />]()
