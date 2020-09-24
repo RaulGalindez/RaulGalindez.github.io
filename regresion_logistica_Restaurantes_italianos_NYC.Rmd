@@ -1,9 +1,16 @@
 ---
 title: "Regresión lineal"
 subtitle: "Múltiple y logística"
+output:
+  html_document: 
+    toc: true
+    toc_float: true 
+    theme: yeti
+    highlight: tango
+    include:
+      after_body: footer.html
 ---
-
-__*Caso: Restaurantes italianos en NYC*__
+# __*Caso: Restaurantes italianos en NYC*__
 
 ```{r italian_food, echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE}
 knitr::include_graphics('img/italian_food_3.jpg')

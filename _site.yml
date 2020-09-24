@@ -9,8 +9,8 @@ navbar:
     - text: "Visualización"
       href: visualizacion.html      
       icon: fa-bar-chart
-    - text: "RLM + Logit"
-      href: regresion_muliple_logit.html      
+    - text: "Algoritmos"
+      href: algoritmos_data_science.html
       icon: fa-line-chart
     - text: "About"
       icon: fa-info

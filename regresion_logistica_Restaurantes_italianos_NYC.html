@@ -11,7 +11,7 @@
 
 
 
-<title>Regresión lineal</title>
+<title>Algoritmos</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -439,10 +439,10 @@ div.tocify {
   </a>
 </li>
 <li>
-  <a href="regresion_muliple_logit.html">
+  <a href="algoritmos_data_science.html">
     <span class="fa fa-line-chart"></span>
      
-    RLM + Logit
+    Algoritmos
   </a>
 </li>
 <li>
@@ -464,17 +464,11 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Regresión lineal</h1>
-<h3 class="subtitle">Múltiple y logística</h3>
+<h1 class="title toc-ignore">Algoritmos</h1>
 
 </div>
 
 
-<div id="índice" class="section level1">
-<h1>Índice</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" title="1"><span class="bu">print</span>(<span class="dv">2</span><span class="op">+</span><span class="dv">2</span>)</a></code></pre></div>
-<pre><code>## 4</code></pre>
-</div>
 <div id="caso-restaurantes-italianos-en-nyc" class="section level1">
 <h1><strong><em>Caso: Restaurantes italianos en NYC</em></strong></h1>
 <p><img src="img/italian_food_3.jpg" width="425" /></p>
@@ -517,7 +511,7 @@ FALSE $ East       &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 - ¿cómo se relacionan una con la otra?.<br />
 - ¿qué patrones representan?.</p>
 <p>Un buen approach es usar ´ggpairs()´ function de la librería <code>GGally</code> para explorar visualmente la relación entre las variables y conocer el coeficeinte de correlación lineal de pearson asociados:</p>
-<p><img src="regresion_muliple_logit_files/figure-html/eda-1.png" width="672" /></p>
+<p><img src="regresion_logistica_Restaurantes_italianos_NYC_files/figure-html/EDA-1.png" width="672" /></p>
 <ul>
 <li>Podemos ver que existe una relación lineal importante entre las variables en cuestión, siendo la que más fuerte está relacionado con el precio <code>Decor</code>, la decoración del lugar.<br />
 </li>
@@ -526,12 +520,12 @@ FALSE $ East       &lt;fct&gt; 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 <li>Para variables dicotómicas<code>east</code>, estos scatter plots no muestran mucha concluyente.</li>
 </ul>
 <p>Otra forma bastante gráfica de ver la correlación entre las varibles es a través de un correlation heatmaps:</p>
-<p><img src="regresion_muliple_logit_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="regresion_logistica_Restaurantes_italianos_NYC_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="importancia-de-las-variables-en-el-precio" class="section level1">
 <h1>Importancia de las variables en el precio</h1>
 <p>Es esperable que la calidad de la comida, o al menos la percepción que se tenga de la misma, esté relacionada con el precio de esta. Chequeemos esto con un modelo de regresión lineal simple (incorporemos un diagrama de dispersión que muestre cómo se relacionan estas variables:</p>
-<p><img src="regresion_muliple_logit_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="regresion_logistica_Restaurantes_italianos_NYC_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <pre><code>FALSE 
 FALSE Call:
 FALSE lm(formula = Price ~ Food, data = nyc)
@@ -540,7 +534,7 @@ FALSE Coefficients:
 FALSE (Intercept)         Food  
 FALSE     -17.832        2.939</code></pre>
 <p>Cada punto adicional en la calificación de la calidad de la comida está asociado con un incremento de 2.94 USD en el precio medio de la comida. ¿qué tan grande es este efecto? Esto hay que sopesarlo con el nivel de los precios.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">summary</span>(nyc<span class="op">$</span>Price)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">summary</span>(nyc<span class="op">$</span>Price)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    19.0    36.0    43.0    42.7    50.0    65.0</code></pre>
 <p>Tomando en cuenta el precio promedio, un cambio adicional de un punto que trae como consecuencia, en promedio, un aumento de 2.94 USD en el precio, no es nada despreciable.</p>
@@ -557,7 +551,7 @@ FALSE 2 1           44.0</code></pre>
 <div id="parallel-slopes-models" class="section level1">
 <h1>Parallel slopes models</h1>
 <p>Cuando introducimos una variable cualitativa dicotómica en nuestro modelo, pasamos a estar en presencia de un modelo de pendientes paralelas (parallel slopes model), en este caso la variable <code>east</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span><span class="kw">factor</span>(East), <span class="dt">data =</span> nyc)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span><span class="kw">factor</span>(East), <span class="dt">data =</span> nyc)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ Food + factor(East), data = nyc)
@@ -568,11 +562,11 @@ FALSE 2 1           44.0</code></pre>
 <p>De la anterior salida tenemos que: - Por cada punto adicional en el review de la calidade la comida, el precio promedio de la comida incrementa en 2.875 USD, despues de controlar el efecto de la locación del restaurante.<br />
 - El estar en el lado este de la 5ta avenida agrega 1.46 USD al precio medio de la comida, controlando el efecto de la calidad de la comida.</p>
 <p>Visualización del modelo:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">library</span>(broom)</a>
-<a class="sourceLine" id="cb10-2" title="2">mod &lt;-<span class="st"> </span><span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span>East, <span class="dt">data =</span> nyc)</a>
-<a class="sourceLine" id="cb10-3" title="3"></a>
-<a class="sourceLine" id="cb10-4" title="4">augmented_mod &lt;-<span class="st"> </span><span class="kw">augment</span>(mod)</a>
-<a class="sourceLine" id="cb10-5" title="5"><span class="kw">glimpse</span>(augmented_mod)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">library</span>(broom)</a>
+<a class="sourceLine" id="cb8-2" title="2">mod &lt;-<span class="st"> </span><span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span>East, <span class="dt">data =</span> nyc)</a>
+<a class="sourceLine" id="cb8-3" title="3"></a>
+<a class="sourceLine" id="cb8-4" title="4">augmented_mod &lt;-<span class="st"> </span><span class="kw">augment</span>(mod)</a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="kw">glimpse</span>(augmented_mod)</a></code></pre></div>
 <pre><code>## Rows: 168
 ## Columns: 9
 ## $ Price      &lt;dbl&gt; 43, 32, 34, 41, 54, 52, 34, 34, 39, 44, 45, 47, 52, 35, ...
@@ -584,13 +578,13 @@ FALSE 2 1           44.0</code></pre>
 ## $ .hat       &lt;dbl&gt; 0.021640632, 0.016155247, 0.017323431, 0.016155247, 0.03...
 ## $ .sigma     &lt;dbl&gt; 7.267757, 7.243380, 7.236974, 7.270778, 7.268558, 7.2547...
 ## $ .cooksd    &lt;dbl&gt; 1.135597e-03, 6.885471e-03, 9.093445e-03, 9.264255e-05, ...</code></pre>
-<p><img src="regresion_muliple_logit_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="regresion_logistica_Restaurantes_italianos_NYC_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>¿qUÉ papel juega el servicio en el precio de los platos? ¿Qué tanto más están dispuestos los clientes a pagar por un mejor servicio, controlando las variables antesiores?</p>
 <p>Acá pasamos propiamente a un modelo de regresión múltiple, al incorporar dos variables cuantitativas:</p>
 </div>
 <div id="fit-model" class="section level1">
 <h1>fit model</h1>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"> <span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span>Service, <span class="dt">data =</span> nyc)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"> <span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span>Service, <span class="dt">data =</span> nyc)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ Food + Service, data = nyc)
@@ -600,7 +594,7 @@ FALSE 2 1           44.0</code></pre>
 ##     -21.159        1.495        1.704</code></pre>
 <p>Comparado con el primer modelo donde relacionabamos el precio a la calidad de la comida (enumerar los modelos para poder hacer referencia a ellos en el análisis), en el cual por cada punto adicional en lo referente a la calidad d ela comida, el precio aumentaba 2.94 USD, en este modelo donde incorporamos el servicio como modelo explicativo vemos que al controlar el servicio, lo que aumenta el precio de la comida por la calidad de la misma es 1.49 USD, lo cual es menor que cuando considerabamos solo la comidao incluso la comida y la ubicaciónj del restaurante. Esto quiere dcir que la atención recibida es más determinante que la calidad misma, o dicho de otra manera, dos restaurantes con la mismna puntuación en servicio, solo van a aumentear 1.49 USD en el precio medio, por otro lado, luego de controlar el efecto de la calidad de la comidal, el precio medio aumenta 1.7 uSD por cada punto adicional de la calidad del servicio.</p>
 <p>A lo anterior pdriamos decir que la calidad del servicio modera el efecto que tiene la calidad de la comida en el precuoi medio, si bien considerando solo la caliudad de la comida el efecto era de casi 3 USD, ya controlantdo por el servivcio recibido, este efecto mengua. De igual manera , la calidad de la comida modera el efecto del servicio (Vease el cofeicnete dfe regresión asociadp o al servicio solo)</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"> <span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Service, <span class="dt">data =</span> nyc)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"> <span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Service, <span class="dt">data =</span> nyc)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ Service, data = nyc)
@@ -610,7 +604,7 @@ FALSE 2 1           44.0</code></pre>
 ##     -11.978        2.818</code></pre>
 <p>Si bien este ejercicio no tiene en cuenta la multicolinealidad de las variables, en posteriores análisis sería interesnte y necesario analizar la multicolinealidad entre las variables, ya que si bien incorporar variables altasmente correlacionadas no afecta la validez del <span class="math inline">\(R^2\)</span> sí hace que los cofecientes estimados sean inestables (buscar bibliografia e incorporarla). En ocasiones coeficientes que nos lleven a conclusiiones extrañas o poco intuitivas pueden estar relacionadas con la multicolinealidad.</p>
 <p>Efecto de la calidad del servicio, de la comida y la ubicación en el precio de la comida</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span>Service <span class="op">+</span><span class="st"> </span>East, <span class="dt">data =</span> nyc)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span>Service <span class="op">+</span><span class="st"> </span>East, <span class="dt">data =</span> nyc)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ Food + Service + East, data = nyc)
@@ -621,7 +615,7 @@ FALSE 2 1           44.0</code></pre>
 <p>Comparando el efecto que tiene el hecho de que el restauranre se encuentre en el lado Este de la 5ta avenida (controlando por la calidad de la comida y del servicio), este es menor que el impacto que tienen las otras dos variables. Es decir, tomando en cuenta estas 3 variabels, es más importante el efecto de la calidad de la comida y del servicio que la ubicación.</p>
 <p>Los coeficientes asociadasas a la comida y el sertbicvio no tyuvierron cambios imporrantes con respecto a los modelos anteriores.</p>
 <p>Incorporemos las 4 variables a ver qué talco</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span>Service <span class="op">+</span><span class="st"> </span>Decor <span class="op">+</span><span class="st"> </span>East, <span class="dt">data=</span> nyc)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">lm</span>(Price <span class="op">~</span><span class="st"> </span>Food <span class="op">+</span><span class="st"> </span>Service <span class="op">+</span><span class="st"> </span>Decor <span class="op">+</span><span class="st"> </span>East, <span class="dt">data=</span> nyc)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = Price ~ Food + Service + Decor + East, data = nyc)

@@ -1,5 +1,13 @@
 ---
 title: "My Website"
+output:
+  html_document: 
+    toc: true
+    toc_float: true 
+    theme: yeti
+    highlight: tango
+    include:
+      after_body: footer.html
 ---
 
 Herramientas usadas comúnmente en Data Science

@@ -1,8 +1,13 @@
 ---
 title: "About This Website"
+output:
+  html_document: 
+    toc: true
+    toc_float: true 
+    theme: yeti
+    highlight: tango
+    include:
+      after_body: footer.html
 ---
 
-Herramientas usadas comúnmente en Data Science
-
-
-[ABC](Deteccion_de_fraudes_usando_autoencoder.html)
+Acá recopilo herramientas usadas comúnmente en Data Science

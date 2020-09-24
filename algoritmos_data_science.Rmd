@@ -1,0 +1,26 @@
+---
+title: "Algoritmos"
+subtitle: ""
+output:
+  html_document: 
+    toc: true
+    toc_float: true 
+    theme: yeti
+    highlight: tango
+    include:
+      after_body: footer.html
+---
+# Índice
+
+1. <a href="arboles_decision.html" target="_blank">Decision trees</a>
+2. <a href="k_means.html" target="_blank">K-means</a>
+3. <a href="knn.html" target="_blank">KNN</a>
+4. <a href="random_forest.html" target="_blank">Random forest</a>
+5. Regresión logística  
+5.1 <a href="regresion_logistica_titanic.html" target="_blank">Caso: Titanic</a>  
+5.2 <a href="regresion_logistica_Restaurantes_italianos_NYC.html" target="_blank">Caso: Restaurantes italianos en NYC</a>
+
+
+```{python }
+print(2+2)
+```

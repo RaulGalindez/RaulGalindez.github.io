@@ -1,11 +1,13 @@
 ---
-title: "Graficando"
+title: "Visualizando nuestra data"
 output:
-  knitrBootstrap::bootstrap_document:
-    theme: Cerulean
-    highlight: sunburst
-    theme.chooser: TRUE
-    highlight.chooser: TRUE
+  html_document: 
+    toc: true
+    toc_float: true 
+    theme: yeti
+    highlight: tango
+    include:
+      after_body: footer.html
 ---
 
 ```{r graph, echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE}
@@ -15,7 +17,7 @@ knitr::include_graphics ('img/graph2.jpg')
 # Scatter plots
 ## Con tres (3) variables cuantitivas
 
-Agregaremos una linea de ajuste usando el modelo lineal general + los respectibos intervalos de confianza de las bandas.
+Agregaremos una linea de ajuste usando el modelo lineal general + los respectivos intervalos de confianza de las bandas.
 
 
 ```{r scatter_plots_3_var_cuanti,echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
@@ -93,4 +95,6 @@ library(plotly)
 pp <- ggplotly(scat3, tooltip="text")
 pp
 ```
+
+
 
