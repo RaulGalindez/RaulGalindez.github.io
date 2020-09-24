@@ -19,8 +19,5 @@ output:
 5. Regresión logística  
 5.1 <a href="regresion_logistica_titanic.html" target="_blank">Caso: Titanic</a>  
 5.2 <a href="regresion_logistica_Restaurantes_italianos_NYC.html" target="_blank">Caso: Restaurantes italianos en NYC</a>
-
-
-```{python }
-print(2+2)
-```
+6. Redes neuronales  
+6.1 <a href="Deteccion_de_fraudes_usando_autoencoder.html" target="_blank">Autoencoders en Keras. Caso: Detección de Fraudes en pagos de Tarjetas de Crédito/Débito</a>  
