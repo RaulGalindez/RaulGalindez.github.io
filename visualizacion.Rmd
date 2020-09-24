@@ -1,5 +1,11 @@
 ---
 title: "Graficando"
+output:
+  knitrBootstrap::bootstrap_document:
+    theme: Cerulean
+    highlight: sunburst
+    theme.chooser: TRUE
+    highlight.chooser: TRUE
 ---
 
 ```{r graph, echo=FALSE, cache=FALSE, warning=FALSE, comment=FALSE, warning=FALSE}
