@@ -10,4 +10,4 @@ output:
       after_body: footer.html
 ---
 
-Herramientas usadas comúnmente en Data Science
+Acá recopilo herramientas comunmente usadas como Data Scientist
