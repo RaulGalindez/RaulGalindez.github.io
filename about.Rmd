@@ -1,5 +1,5 @@
 ---
-title: "About This Website"
+title: "About me"
 output:
   html_document: 
     toc: true
@@ -10,4 +10,20 @@ output:
       after_body: footer.html
 ---
 
-Acá recopilo herramientas comunmente usadas como Data Scientist
+Soy Licenciado en Ciencas Estadísticas egresado de la Universidad Central de Venezuela en 2012.  
+
+## Conecta conmigo:
+
+[<img align="left" alt="raulgalindez | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />](https://twitter.com/raulgalindez)
+[<img align="left" alt="raulgalindez | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/raulgalindez/)
+
+<br />
+
+## Herramientas y lenguajes :
+
+[<img align="left" alt="RStudio" width="26px" src="C:/Users/GalindezR/Desktop/raulgalindez.github.io/img/rstudio.png" />]()
+[<img align="left" alt="Python" width="26px" src="img/Python.png" />]()
+[<img align="left" alt="SAS" width="26px" src="img/sas_favicon.ico" />]()
+[<img align="left" alt="SPSS" width="26px" src="img/SPSS.PNG" />]()
+
+<br />

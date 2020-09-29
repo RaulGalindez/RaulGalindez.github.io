@@ -63,7 +63,6 @@ Un buen approach es usar ´ggpairs()´ function de la librería `GGally` para ex
 #pairs(nyc[,3:7])
 library('GGally')
 library('ggplot2')
-
 ggpairs(nyc[,3:7]) 
 ```
 
@@ -74,7 +73,7 @@ ggpairs(nyc[,3:7])
 Otra forma bastante gráfica de ver la correlación entre las varibles es a través de un correlation heatmaps:  
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, comment=FALSE, paged.print=FALSE}
-ggcorr(nyc[,3:7], method = c("everything", "pearson"))
+ggcorr(nyc[,3:6], method = c("everything", "pearson"))
 
 ```
 
