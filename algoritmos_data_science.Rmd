@@ -14,10 +14,11 @@ output:
 
 1. Decision trees  
 1.1 <a href="arboles_decision.html" target="_blank">Caso: Vinos</a>  
-2. <a href="k_means.html" target="_blank">K-means</a>  
+2. K-means    
+2.1 <a href="k_means.html" target="_blank">Caso: Dummy</a>
 3. KNN (K-nearest neighbors)  
 3.1 <a href="knn.html" target="_blank">Caso: Clasificación de autos</a>  
-4. Random forest
+4. Random forest    
 4.1 <a href="random_forest.html" target="_blank">Caso: Vinos</a>  
 5. Regresión logística  
 5.1 <a href="regresion_logistica_titanic.html" target="_blank">Caso: Titanic</a>  
