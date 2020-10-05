@@ -2,24 +2,37 @@
 title: "About me"
 output:
   html_document: 
-    toc: true
-    toc_float: true 
     theme: yeti
     highlight: tango
     include:
       after_body: footer.html
 ---
 
-Soy Licenciado en Ciencas Estadísticas egresado de la Universidad Central de Venezuela en 2012.  
+Soy un Data Scientist con Licenciatura en Ciencias Estadísticas egresado de la Universidad Central de Venezuela en 2012.
 
-## Conecta conmigo  
+Tengo __experiencia__ trabajando con proyectos de:   
+
+* Consumo masivo
+* Seguros 
+* Movilidad de personas
+* Seguridad Ciudadana  
+
+Con __técnicas__ como:
+
+* Clustering
+* Análisis discriminante
+* Muestreo
+* Control Estadístico de Calidad
+* Entre otras
+
+## __Conecta conmigo__  
 
 [<img align="left" alt="raulgalindez | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/twitter.svg" />](https://twitter.com/raulgalindez)
 [<img align="left" alt="raulgalindez | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />](https://www.linkedin.com/in/raulgalindez/)
 
 <br />
 
-## Herramientas y lenguajes  
+## __Herramientas y lenguajes__  
 
 [<img align="left" alt="RStudio" width="26px" src="C:/Users/GalindezR/Desktop/raulgalindez.github.io/img/rstudio.png" />]()
 [<img align="left" alt="Python" width="26px" src="img/Python.png" />]()
