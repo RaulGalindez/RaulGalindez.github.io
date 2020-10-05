@@ -13091,7 +13091,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -13105,7 +13105,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
@@ -13122,7 +13122,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[25]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -13150,7 +13150,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;.//img//wines__.jpg&quot;</span><span class="p">)</span>
@@ -13166,7 +13166,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[26]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -13193,7 +13193,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -13217,7 +13217,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">vinos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;.//data//wine_dataset.csv&#39;</span><span class="p">)</span>
@@ -13238,7 +13238,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">vinos</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;Wine Type&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -13259,7 +13259,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">vinos</span><span class="p">[</span><span class="s1">&#39;Wine Type&#39;</span><span class="p">]</span> 
@@ -13280,7 +13280,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
@@ -13293,7 +13293,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="o">.</span><span class="mi">3</span><span class="p">)</span>
@@ -13314,7 +13314,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[33]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
@@ -13327,7 +13327,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[43]:</div>
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">randomforest</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">()</span>
@@ -13340,7 +13340,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">randomforest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
@@ -13356,7 +13356,7 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[44]:</div>
+    <div class="prompt output_prompt">Out[12]:</div>
 
 
 
@@ -13388,7 +13388,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">predicciones</span> <span class="o">=</span> <span class="n">randomforest</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
@@ -13401,7 +13401,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[46]:</div>
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">predicciones</span>
@@ -13417,19 +13417,19 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[46]:</div>
+    <div class="prompt output_prompt">Out[14]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>array([&#39;Three&#39;, &#39;Two&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Three&#39;, &#39;Three&#39;, &#39;One&#39;, &#39;Two&#39;,
-       &#39;One&#39;, &#39;One&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;One&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Two&#39;,
-       &#39;Three&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Three&#39;, &#39;One&#39;, &#39;Two&#39;, &#39;Two&#39;, &#39;Two&#39;,
-       &#39;One&#39;, &#39;One&#39;, &#39;One&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Two&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Two&#39;,
-       &#39;Two&#39;, &#39;Two&#39;, &#39;One&#39;, &#39;One&#39;, &#39;One&#39;, &#39;One&#39;, &#39;Two&#39;, &#39;One&#39;, &#39;Three&#39;,
-       &#39;One&#39;, &#39;One&#39;, &#39;Two&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;One&#39;, &#39;Three&#39;, &#39;Two&#39;, &#39;Two&#39;,
-       &#39;Three&#39;, &#39;One&#39;, &#39;Three&#39;], dtype=object)</pre>
+<pre>array([&#39;One&#39;, &#39;One&#39;, &#39;One&#39;, &#39;Three&#39;, &#39;One&#39;, &#39;Three&#39;, &#39;One&#39;, &#39;Two&#39;, &#39;Two&#39;,
+       &#39;One&#39;, &#39;One&#39;, &#39;One&#39;, &#39;Three&#39;, &#39;Two&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Three&#39;,
+       &#39;Two&#39;, &#39;Two&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;One&#39;, &#39;One&#39;, &#39;Three&#39;, &#39;One&#39;,
+       &#39;Three&#39;, &#39;Three&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Two&#39;, &#39;Two&#39;, &#39;One&#39;, &#39;Three&#39;,
+       &#39;Three&#39;, &#39;One&#39;, &#39;One&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Two&#39;,
+       &#39;One&#39;, &#39;Three&#39;, &#39;Two&#39;, &#39;Two&#39;, &#39;One&#39;, &#39;One&#39;, &#39;Two&#39;, &#39;Three&#39;, &#39;Two&#39;,
+       &#39;Two&#39;, &#39;Two&#39;, &#39;Two&#39;, &#39;Three&#39;], dtype=object)</pre>
 </div>
 
 </div>
@@ -13440,7 +13440,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[47]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_test</span>
@@ -13456,66 +13456,66 @@ div#notebook {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[47]:</div>
+    <div class="prompt output_prompt">Out[15]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>139    Three
-85       Two
-88       Two
-142    Three
-170    Three
-131    Three
-8        One
-127      Two
-50       One
-38       One
-122      Two
-141    Three
-45       One
-70       Two
-153    Three
-113      Two
-156    Three
-64       Two
-134    Three
-160    Three
-7        One
-110      Two
-63       Two
-79       Two
-35       One
-73       Two
-4        One
-84       Two
-173    Three
-81       Two
-102      Two
-149    Three
-68       Two
-117      Two
-59       Two
-57       One
-10       One
-20       One
-47       One
-99       Two
-56       One
-143    Three
-11       One
-29       One
+<pre>51       One
+49       One
+37       One
+61       Two
+55       One
+161    Three
+40       One
 90       Two
-95       Two
-163    Three
-15       One
-137    Three
-107      Two
-98       Two
-157    Three
-24       One
+121      Two
+34       One
+12       One
+3        One
+130    Three
+88       Two
+101      Two
+143    Three
+160    Three
+105      Two
+123      Two
+63       Two
+132    Three
+41       One
+1        One
+149    Three
+45       One
+154    Three
+167    Three
+64       Two
+162    Three
+103      Two
+128      Two
+31       One
+133    Three
+158    Three
+7        One
+23       One
+87       Two
+131    Three
+93       Two
 138    Three
+72       Two
+20       One
+83       Two
+89       Two
+114      Two
+26       One
+11       One
+68       Two
+139    Three
+129      Two
+112      Two
+69       Two
+100      Two
+145    Three
 Name: Wine Type, dtype: object</pre>
 </div>
 
@@ -13535,7 +13535,7 @@ Name: Wine Type, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[39]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
@@ -13548,7 +13548,7 @@ Name: Wine Type, dtype: object</pre>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[40]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicciones</span><span class="p">))</span>
@@ -13570,13 +13570,13 @@ Name: Wine Type, dtype: object</pre>
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>              precision    recall  f1-score   support
 
-         One       0.94      1.00      0.97        16
-       Three       1.00      1.00      1.00        16
-         Two       1.00      0.95      0.98        22
+         One       1.00      1.00      1.00        17
+       Three       0.88      1.00      0.94        15
+         Two       1.00      0.91      0.95        22
 
-    accuracy                           0.98        54
-   macro avg       0.98      0.98      0.98        54
-weighted avg       0.98      0.98      0.98        54
+    accuracy                           0.96        54
+   macro avg       0.96      0.97      0.96        54
+weighted avg       0.97      0.96      0.96        54
 
 </pre>
 </div>
@@ -13596,7 +13596,7 @@ weighted avg       0.98      0.98      0.98        54
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[42]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predicciones</span><span class="p">))</span>
@@ -13616,9 +13616,9 @@ weighted avg       0.98      0.98      0.98        54
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[[16  0  0]
- [ 0 16  0]
- [ 1  0 21]]
+<pre>[[17  0  0]
+ [ 0 15  0]
+ [ 0  2 20]]
 </pre>
 </div>
 </div>
