@@ -8,7 +8,7 @@ output:
       after_body: footer.html
 ---
 
-Soy un Data Scientist con Licenciatura en Ciencias Estadísticas egresado de la Universidad Central de Venezuela en 2012.
+Soy un __Data Scientist__ con __Licenciatura en Ciencias Estadísticas__ egresado de la __Universidad Central de Venezuela__ en 2012.
 
 Tengo __experiencia__ trabajando con proyectos de:   
 
